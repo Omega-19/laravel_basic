@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/home', function () {
+    $user = "NICOLE";
+    $arr = ["MANGO", 2, 6];
+    //dd($user, $arr);//die and dump s'affiche et s'arrête
+    ddd($user, $arr, "");
+    return "<h1>WELCOME  $user </h1>🤩!";
+});
