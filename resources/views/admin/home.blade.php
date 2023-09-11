@@ -22,26 +22,32 @@
     <h3>SAM-ROD</h3>
     <p>Raison pour laquelle il préfère grrrrrrrrrrrrrrrrrrrrrrrrrrrrr rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
         rrrrrrrrrrrrrrrrrrrrrrrrrrrr et voila l'effet que sa donne sit amet consectetur adipisicing elit.</p>
-    <pre>
-        {{ var_dump($articles)}}
-    </pre>
-    <section>
-        <!-- avec blade on remplace les php par @ -->
-        <h2>Liste des artistes</h2>
-        @if (count($articles) > 0) 
-        @foreach ($articles as $article) 
+        <pre>
+            {{ var_dump($articles)}}
+        </pre>
+        <section>
+            <!-- avec blade on remplace les php par @ -->
+            <h2>Liste des artistes</h2>
+            @if (count($articles) > 0) 
+            @foreach ($articles as $article) 
             <article>
                 <h3>
-                   {{$article["title"] }}
+                    {{$article["title"] }}
                 </h3>
                 <p>
-                 {{$article["description"]}} 
+                    {{$article["description"]}} 
                 </p>
+                {{-- /article, $article[id] permet de spécifier l'indice de chaque article rooute direct--}}
+                {{-- <a href="{{ url('/article', $article['id']) }}">Voir détails</a> --}}
+                {{-- routes nommées --}}
+                <a href="{{route('detail', $article['id']) }}">Voir détails</a>
             </article>
         @endforeach
         @else
         <p>Pas d'article pour le moment</p>
         @endif
+
+       
     </section>
 </body>
 

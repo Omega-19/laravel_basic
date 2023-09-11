@@ -12,17 +12,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 // Route::get('/home', function () {
 //     return view("admin.home");
 // });
 
-Route::get('/home', function () {
+Route::get('/', function () {
     $articles = [
         [
             "id" => 1,
@@ -49,5 +43,18 @@ Route::get('/home', function () {
     return view("admin.home" , [
         'articles' => $articles,
         "user" => "Highfive5"
-    ]);
+    ]);//fonction permettant de retourner une vue
 });
+
+//Route avec paramètres
+
+//l'ordre des paramètres importe
+Route::get('/article/{id}', function (int $id) {
+    return "Détails de l'article " . $id;
+ });
+
+ //Route nommée deuxième manière: 
+
+Route::get('/particuliers/en/share/space/{id}', function (int $id) {
+    return "Route particuliers " . $id;
+})->name('detail');
